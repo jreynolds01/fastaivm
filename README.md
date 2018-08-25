@@ -1,6 +1,6 @@
 # fastaivm
 
-The goal of this repository is to supply a simple mechanism for deploying the requirements for the [fastai course: Practical Deep Learning for Coders: Part 1](http://course.fast.ai/index.html). The button below deploys to an [Ubuntu-based Data Science VM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) (NC6-series) to azure and installs the relevant dependencies.
+The goal of this repository is to supply a simple mechanism for deploying the requirements for the [fastai course: Practical Deep Learning for Coders: Part 1](http://course.fast.ai/index.html). The button below deploys to an [Ubuntu-based Data Science VM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) (NC-series) to azure and installs the relevant dependencies.
 
 **NOTE**: An Azure subscription is required - see below.
 
@@ -18,13 +18,19 @@ Just click this button (see below for details).
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
+## VM size options
+
+The default option (`NC6`) is the cheapest GPU option, but it's also the oldest and slowest. Other GPU-enabled vmSizes are available from the template, but please see the notes in the vm sizes [documentation](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-gpu).
+
+**Specifically** note that the `vCPU` core quota for `_v2` and `_v3` series VMs is initially **set to 0 in each region** for every subscription. You must request a `vCPU` quota increase for this family in an available region. If you choose this vmSize in the template without increasing your quota, the deployment **WILL FAIL**.
+
 ## What is deployed?
 
 You define the name of a resource group, and the following services get deployed to that resource group:
-  - An [Ubuntu-based Data Science VM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) with your defined userName and password.
+  - An [Ubuntu-based Data Science VM](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro) with your defined user name and password.
   - Storage: A storage account and 2 disks for storing data
   - A network interface, virtual network, and public IP address
-
+  
 ## What do I as a user control?
 
 When you click on the `Deploy to Azure` button above, a custom template will launch in the Azure portal that asks you for some information:
