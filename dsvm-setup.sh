@@ -11,12 +11,19 @@
 #    jupyter sees it by default
 # 2. makes sure the data is downloaded in the ~/notebooks/data directory, and linked inside fastai/courses/dl1
 
-$adminUser=$1
+adminUser=$1
 
 WD=/home/$adminUser/notebooks
 
-cd $WD
-echo "Working in $(pwd)"
+echo WD is $WD
+
+if [ ! -d $WD ]; then
+    echo $WD does not exist - aborting!!
+    exit
+else
+    cd $WD
+    echo "Working in $(pwd)"
+fi
 
 if [ -d "fastai" ]; then
     echo "fastai already exists."
