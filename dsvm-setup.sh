@@ -69,8 +69,8 @@ sudo /anaconda/envs/fastai/bin/python -m ipykernel install --name fastai
 # source activate py35
 
 ## update appropriate permissions
-chown -R jrr:jrr ${WD}/data 
-chown -R jrr:jrr ${WD}/fastai
+chown -R ${$adminUser}:${$adminUser} ${WD}/data 
+chown -R ${$adminUser}:${$adminUser} ${WD}/fastai
 
 echo "Done!"
 
