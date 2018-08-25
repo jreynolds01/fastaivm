@@ -11,7 +11,9 @@
 #    jupyter sees it by default
 # 2. makes sure the data is downloaded in the ~/notebooks/data directory, and linked inside fastai/courses/dl1
 
-WD=~/notebooks
+$adminUser=$1
+
+WD=/home/$adminUser/notebooks
 
 cd $WD
 echo "Working in $(pwd)"
@@ -51,9 +53,9 @@ ln -s ~/data ./
 
 # not sure utility of this - will come back after walking through course...
 ## just use the conda env in the repository
-conda clean -a
+/anaconda/envs/py35/bin/conda clean -a
 ## now create the env...
-conda env create -f ${WD}/fastai/environment.yml
+/anaconda/envs/py35/bin/conda env create -f ${WD}/fastai/environment.yml
 ## now install it as a kernel:
 ## requires sudo access...
 sudo /anaconda/envs/fastai/bin/python -m ipykernel install --name fastai
