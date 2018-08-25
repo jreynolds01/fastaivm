@@ -196,7 +196,7 @@
                 "fileUris": [
                   "[variables('scriptUri')]"
                 ],
-                "commandToExecute": "sudo sh dsvm-setup.sh"
+                "commandToExecute": "./dsvm-setup.sh"
               }
             }
           }
