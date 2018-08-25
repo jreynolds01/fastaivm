@@ -36,7 +36,6 @@ else
 fi
 
 # download the dogscats data!
-# do this...
 cd data
 if [ -d dogscats ]; then
     echo "dogscats already exists!"
