@@ -18,7 +18,6 @@ Just click this button (see below for details).
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
 
-
 ## What is deployed?
 
 You define the name of a resource group, and the following services get deployed to that resource group:
@@ -28,7 +27,7 @@ You define the name of a resource group, and the following services get deployed
 
 ## What do I as a user control?
 
-WHen you click on the button, a custom template will launch in the Azure portal that asks you for some information:
+When you click on the `Deploy to Azure` button above, a custom template will launch in the Azure portal that asks you for some information:
 
 - Subscription you are creating the resources in
 - Resource group you want to create all the resources in
@@ -43,15 +42,15 @@ All of this information is controlled with the [azuredeploy.json](azuredeploy.js
 
 ## What happens when I deploy?
 
-The resources are created, and then a [custom script extension](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux#template-deployment) is used to download the [dsvm-setup.sh](dsvm-setup.sh) script from the github repository and then run it. This script is run as root and takes a single argument - the name of the admin you specify in the portal.
+The resources are created, and then a [custom script extension](https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux#template-deployment) is used to download the [dsvm-setup.sh](dsvm-setup.sh) script from this github repository and then run it. This script is run as root and takes a single argument: the name of the admin you specify in the portal.
 
 ## What does the script do?
 
-It pretty much does the following:
+It pretty does the following:
 
 - clones the [fastai repository](https://github.com/fastai/fastai.git) so all the notebooks are available
 - downloads and unzips the [data for the first lab](http://files.fast.ai/data/dogscats.zip).
-- cleans up anaconda and installs a new conda env based on the [environment file](https://github.com/fastai/fastai/blob/master/environment.yml) in the fastai repository (the env name is fastai).
+- cleans up anaconda and installs a new conda env based on the [environment file](https://github.com/fastai/fastai/blob/master/environment.yml) in the fastai repository (the env name is fastai and it is installed in /home/\<adminUser\>/.conda/envs).
 - Installs the environment as a kernel for jupyter notebooks so that the notebooks can be run.
 - makes sure that permissions are appropriate to the admin user.
 
@@ -67,5 +66,5 @@ See the [dsvm-setup.sh](dsvm-setup.sh) file for details.
   - `fastai -> courses -> dl1 -> lesson1.ipynb`
   - This will launch the notebook.
 - Adjust the kernel to make sure it is running with the appropriate environment. Click on the `kernel` menu item, Select `Change kernel`, and select `fastai`
-  - Note - you will likely need to do this step for each notebook!
-- Execute cells and learn!
+  - **Note** - you will likely need to do this step for each notebook!
+- Watch videos at fastai, execute cells, experiment, and learn!
