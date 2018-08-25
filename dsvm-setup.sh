@@ -61,16 +61,22 @@ fi
 ## just use the conda env in the repository
 /anaconda/envs/py35/bin/conda clean -ay
 ## now create the env...
-/anaconda/envs/py35/bin/conda env create -f ${WD}/fastai/environment.yml
+condapath=/home/$adminUser/.conda/envs
+
+if [! -d $condapath ]; then
+    mkdir -p $condapath
+fi
+
+/anaconda/envs/py35/bin/conda env create -f ${WD}/fastai/environment.yml -p $condapath/fastai
 ## now install it as a kernel:
-## requires sudo access...
-sudo /anaconda/envs/fastai/bin/python -m ipykernel install --name fastai
+$condapath/fastai/bin/python -m ipykernel install --name fastai
 ## activate appropriate conda env in case we need to add any pip or conda installs below
 # source activate py35
 
 ## update appropriate permissions
 chown -R ${adminUser}:${adminUser} ${WD}/data 
 chown -R ${adminUser}:${adminUser} ${WD}/fastai
+chown -R ${adminUser}:${adminUser} ${condapath}
 
 echo "Done!"
 
