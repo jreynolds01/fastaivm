@@ -1,10 +1,7 @@
 #!/usr/bin/env bash
 
-# This should set up an Ubuntu DSVM for this course
-# Assumes you have deployed an NC-series VM, so CUDA
-# is already installed in the py35 conda env
-# this is based on the last part of 
-# http://files.fast.ai/setup/paperspace
+# This script is intended as an initialization script used in azuredeploy.json
+# See documentation here: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux#template-deployment
 
 # It really just does two things.
 # 1. makes sure the fastai repo is cloned in the ~/notebooks directory so that
@@ -28,7 +25,7 @@ fi
 if [ -d "fastai" ]; then
     echo "fastai already exists."
 else
-    git clone git@github.com:fastai/fastai.git
+    /usr/bin/git clone git@github.com:fastai/fastai.git
 fi
 
 ## create data directory
