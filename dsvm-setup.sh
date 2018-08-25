@@ -3,10 +3,8 @@
 # This script is intended as an initialization script used in azuredeploy.json
 # See documentation here: https://docs.microsoft.com/en-us/azure/virtual-machines/extensions/custom-script-linux#template-deployment
 
-# It really just does two things.
-# 1. makes sure the fastai repo is cloned in the ~/notebooks directory so that
-#    jupyter sees it by default
-# 2. makes sure the data is downloaded in the ~/notebooks/data directory, and linked inside fastai/courses/dl1
+# see abbreviated notes in README.md
+# comments below:
 
 adminUser=$1
 
@@ -61,18 +59,19 @@ fi
 ## just use the conda env in the repository
 /anaconda/envs/py35/bin/conda clean -ay
 ## now create the env...
-/anaconda/envs/py35/bin/conda env create -f ${WD}/fastai/environment.yml
+condapath=/home/$adminUser/.conda/envs
+
+if [ ! -d $condapath ]; then
+    mkdir -p $condapath
+fi
+
+/anaconda/envs/py35/bin/conda env create -f ${WD}/fastai/environment.yml -p $condapath/fastai
 ## now install it as a kernel:
-## requires sudo access...
-sudo /anaconda/envs/fastai/bin/python -m ipykernel install --name fastai
-## activate appropriate conda env in case we need to add any pip or conda installs below
-# source activate py35
+$condapath/fastai/bin/python -m ipykernel install --name fastai
 
 ## update appropriate permissions
 chown -R ${adminUser}:${adminUser} ${WD}/data 
 chown -R ${adminUser}:${adminUser} ${WD}/fastai
+chown -R ${adminUser}:${adminUser} ${condapath}
 
 echo "Done!"
-
-# already installed==7.2.1 (should check version requirements)
-# pip install ipywidgets
