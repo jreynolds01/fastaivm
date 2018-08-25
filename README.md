@@ -60,7 +60,7 @@ See the [dsvm-setup.sh](dsvm-setup.sh) file for details.
 ## How do I access the course materials?
 
 - Identify the DNS name prefix and geo used in deployment.
-- Proceed to https://<dnsprefix>.<location>.cloudapp.azure.com:8000 to access the jupyter server
+- Proceed to https://\<dnsprefix\>.\<location\>.cloudapp.azure.com:8000 to access the jupyter server
   - **NOTE**: You will encounter a certificate error - proceed through it.
 - Log in with the username and password you specified when you deployed.
 - Within the jupyter navigator, start by navigating to:
