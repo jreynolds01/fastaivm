@@ -25,7 +25,7 @@ fi
 if [ -d "fastai" ]; then
     echo "fastai already exists."
 else
-    /usr/bin/git clone git@github.com:fastai/fastai.git
+    /usr/bin/git clone https://github.com/fastai/fastai.git
 fi
 
 ## create data directory
@@ -56,7 +56,7 @@ cd ${WD}/fastai/courses/dl1/
 ln -s ~/data ./
 
 ## just use the conda env in the repository
-/anaconda/envs/py35/bin/conda clean -a
+/anaconda/envs/py35/bin/conda clean -ay
 ## now create the env...
 /anaconda/envs/py35/bin/conda env create -f ${WD}/fastai/environment.yml
 ## now install it as a kernel:
