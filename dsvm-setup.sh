@@ -52,8 +52,11 @@ else
 fi
 
 ## link data dir in the dl1 course.
-cd ${WD}/fastai/courses/dl1/
-ln -s ~/data ./
+if [ ! -d ${WD}/fastai ]; then
+    echo "fastai was not cloned. Check for errors above!"
+else
+    ln -s ${WD}/fastai/courses/dl1/data ${WD}/data
+fi
 
 ## just use the conda env in the repository
 /anaconda/envs/py35/bin/conda clean -ay
