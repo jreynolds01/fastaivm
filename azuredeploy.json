@@ -24,7 +24,18 @@
           "type": "string",
           "defaultValue": "Standard_NC6",
           "allowedValues": [
-              "Standard_NC6"
+              "Standard_NC6",
+              "Standard_NC12",
+              "Standard_NC24",
+              "Standard_NC24r",
+              "Standard_NC6s_v2",
+              "Standard_NC12s_v2",
+              "Standard_NC24s_v2",
+              "Standard_NC24rs_v2",
+              "Standard_NC6s_v3",
+              "Standard_NC12s_v3",
+              "Standard_NC24s_v3",
+              "Standard_NC24rs_v3"
           ],
           "metadata": {
               "description": "Size for the Virtual Machine."
