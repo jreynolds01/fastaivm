@@ -50,11 +50,12 @@ else
     /bin/rm ${WD}/data/dogscats.zip
 fi
 
+
 ## link data dir in the dl1 course.
 if [ ! -d ${WD}/fastai ]; then
     echo "fastai was not cloned. Check for errors above!"
 else
-    ln -s ${WD}/fastai/courses/dl1/data ${WD}/data
+    ln -s ${WD}/data ${WD}/fastai/courses/dl1/data 
 fi
 
 ## just use the conda env in the repository
@@ -66,6 +67,10 @@ fi
 sudo /anaconda/envs/fastai/bin/python -m ipykernel install --name fastai
 ## activate appropriate conda env in case we need to add any pip or conda installs below
 # source activate py35
+
+## update appropriate permissions
+chown -R jrr:jrr ${WD}/data 
+chown -R jrr:jrr ${WD}/fastai
 
 echo "Done!"
 
