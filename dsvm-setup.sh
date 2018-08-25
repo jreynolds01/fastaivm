@@ -58,7 +58,6 @@ fi
 cd ${WD}/fastai/courses/dl1/
 ln -s ~/data ./
 
-# not sure utility of this - will come back after walking through course...
 ## just use the conda env in the repository
 /anaconda/envs/py35/bin/conda clean -a
 ## now create the env...
@@ -71,13 +70,5 @@ sudo /anaconda/envs/fastai/bin/python -m ipykernel install --name fastai
 
 echo "Done!"
 
-#jupyter notebook --generate-config
-
 # already installed==7.2.1 (should check version requirements)
-#pip install ipywidgets
-# looks like they are installed.
-#jupyter nbextension enable --py widgetsnbextension --sys-prefix
-# echo
-# echo ---
-# echo - YOU NEED TO REBOOT YOUR PAPERSPACE COMPUTER NOW
-# echo ---
+# pip install ipywidgets
