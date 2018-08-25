@@ -196,7 +196,7 @@
                 "fileUris": [
                   "[variables('scriptUri')]"
                 ],
-                "commandToExecute": "[concat('./dsvm-setup.sh ', parameters('adminUsername')]"                
+                "commandToExecute": "[concat('./dsvm-setup.sh ', parameters('adminUsername'))]"                
               }
             }
           }
