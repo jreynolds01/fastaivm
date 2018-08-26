@@ -41,7 +41,7 @@ When you click on the `Deploy to Azure` button above, a custom template will lau
 - DNS label prefix
 - Admin Username
 - Admin Password
-- VmSize (only NC6 avail. now)
+- VmSize (NC6 as default; other NC options avail, see note above)
 - Vm Name
 
 All of this information is controlled with the [azuredeploy.json](azuredeploy.json) file in the root directory of this repository.
@@ -52,25 +52,25 @@ The resources are created, and then a [custom script extension](https://docs.mic
 
 ## What does the script do?
 
-It pretty does the following:
+It does the following:
 
-- clones the [fastai repository](https://github.com/fastai/fastai.git) so all the notebooks are available
-- downloads and unzips the [data for the first lab](http://files.fast.ai/data/dogscats.zip).
-- cleans up anaconda and installs a new conda env based on the [environment file](https://github.com/fastai/fastai/blob/master/environment.yml) in the fastai repository (the env name is fastai and it is installed in /home/\<adminUser\>/.conda/envs).
+- Clones the [fastai repository](https://github.com/fastai/fastai.git) so all the notebooks are available
+- Downloads and unzips the [data for the first lab](http://files.fast.ai/data/dogscats.zip).
+- Cleans up anaconda and installs a new conda env based on the [environment file](https://github.com/fastai/fastai/blob/master/environment.yml) in the fastai repository (the env name is fastai and it is installed in /home/\<adminUser\>/.conda/envs).
 - Installs the environment as a kernel for jupyter notebooks so that the notebooks can be run.
-- makes sure that permissions are appropriate to the admin user.
+- Makes sure that permissions are appropriate to the admin user.
 
 See the [dsvm-setup.sh](dsvm-setup.sh) file for details.
 
 ## How do I access the course materials?
 
 - Identify the DNS name prefix and geo used in deployment.
-- Proceed to https://\<dnsprefix\>.\<location\>.cloudapp.azure.com:8000 to access the jupyter server
-  - **NOTE**: You will encounter a certificate error - proceed through it.
+- Proceed to `https://<dnsprefix>.<location>.cloudapp.azure.com:8000` to access the jupyter server
+  - **NOTE**: You will encounter a certificate error - proceed through it
 - Log in with the username and password you specified when you deployed.
-- Within the jupyter navigator, start by navigating to:
-  - `fastai -> courses -> dl1 -> lesson1.ipynb`
-  - This will launch the notebook.
-- Adjust the kernel to make sure it is running with the appropriate environment. Click on the `kernel` menu item, Select `Change kernel`, and select `fastai`
+- Within the jupyter file navigator, you should see a large list of directories and files.
+  - Navigate to `fastai -> courses -> dl1`
+  - Within, `dl1`, click on  `lesson1.ipynb` to launch the notebook.
+- In the tab that has launched notebook, click on the `kernel` menu item, Select `Change kernel`, and select `fastai` in order to change the kernel to the right environment.
   - **Note** - you will likely need to do this step for each notebook!
-- Watch videos at fastai, execute cells, experiment, and learn!
+- Watch videos at [fastai](http://course.fast.ai/index.html), execute cells, experiment, and learn!
