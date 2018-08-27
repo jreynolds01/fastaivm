@@ -190,13 +190,13 @@
           {
             "apiVersion": "2016-04-30-preview",
             "type": "extensions",
-            "name": "config-app",
+            "name": "fastaivm",
             "location": "[resourceGroup().location]",
             "dependsOn": [
               "[concat('Microsoft.Compute/virtualMachines/', variables('vmName'))]"
             ],
             "tags": {
-              "displayName": "config-app"
+              "displayName": "fastaivm"
             },
             "properties": {
               "publisher": "Microsoft.Azure.Extensions",
